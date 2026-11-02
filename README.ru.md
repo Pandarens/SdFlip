@@ -45,7 +45,7 @@ SdFlip.open({ source: '/files/catalog.pdf', title: 'Каталог', lang: 'ru' 
 SdFlip.inline('#book', { source: '/files/catalog.pdf' });   // встроить в страницу
 ```
 
-Также через npm: `npm install sdflip`, или архив со [страницы релизов](https://github.com/Pandarens/SdFlip/releases).
+Также через npm: `npm install github:Pandarens/SdFlip`, или архив со [страницы релизов](https://github.com/Pandarens/SdFlip/releases).
 
 Все настройки, методы, события, оформление через CSS-переменные и размещение pdf.js на своём сервере описаны в [английском README](README.md#options) и на [сайте документации](https://pandarens.github.io/SdFlip/#docs).
 

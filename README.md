@@ -49,7 +49,7 @@ That is the whole integration: every element with `data-sdflip` opens the PDF fr
 ### npm
 
 ```bash
-npm install sdflip
+npm install github:Pandarens/SdFlip
 ```
 
 ```js
