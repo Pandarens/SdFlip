@@ -1,0 +1,44 @@
+{
+  "name": "sdflip",
+  "version": "1.0.0",
+  "description": "Realistic PDF flipbook for the web: page curl, paper sounds, spreads, search and perfect mobile support. No jQuery, no build step.",
+  "main": "dist/sdflip.js",
+  "style": "dist/sdflip.css",
+  "unpkg": "dist/sdflip.min.js",
+  "jsdelivr": "dist/sdflip.min.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "npm --prefix test install && node test/run.mjs",
+    "samples": "python tools/make-samples.py",
+    "start": "npx --yes serve ."
+  },
+  "keywords": [
+    "flipbook",
+    "pdf",
+    "pdf-viewer",
+    "page-flip",
+    "page-curl",
+    "turnjs",
+    "dflip",
+    "magazine",
+    "catalog",
+    "pdfjs"
+  ],
+  "author": "Pandaren",
+  "license": "MIT",
+  "homepage": "https://pandarens.github.io/SdFlip/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pandarens/SdFlip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pandarens/SdFlip/issues"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}

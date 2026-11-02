@@ -1,0 +1,15 @@
+{
+  "name": "sdflip-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SdFlip browser tests (Playwright + system Chrome or Edge)",
+  "scripts": {
+    "test": "node run.mjs",
+    "seams": "node seams.mjs",
+    "perf": "node perf.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "playwright-core": "1.56.1"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+test/report*/
+test/cache/
+test/*.json
+!test/package.json
+!test/package-lock.json
+*.zip
+.DS_Store
+Thumbs.db

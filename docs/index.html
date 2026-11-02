@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SdFlip — PDF flipbook that turns like paper</title>
+<meta name="description" content="Open-source PDF flipbook for the web: realistic page curl, paper sounds, double-page spreads, search, outline and perfect mobile support. One script, no jQuery.">
+<meta property="og:title" content="SdFlip — PDF flipbook that turns like paper">
+<meta property="og:description" content="Realistic page curl, paper sounds, spreads, search and perfect mobile support. MIT licensed.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pandarens.github.io/SdFlip/assets/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#5b5bf6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="lib/sdflip.min.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+	try { var t = localStorage.getItem('sdflip-theme'); if (t) { document.documentElement.setAttribute('data-theme', t); } } catch (e) { /* storage blocked */ }
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+	<div class="wrap">
+		<a class="logo" href="#top" aria-label="SdFlip home">
+			<svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf6"/><stop offset="1" stop-color="#ff7361"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M7 9.5c3-1 6-1 9 1v13c-3-2-6-2-9-1z" fill="#fff" opacity=".7"/><path d="M16 10.5c2.6-2.4 5.6-3 9-2.4v13c-3.4-.6-6.4 0-9 2.4z" fill="#fff"/></svg>
+			SdFlip
+		</a>
+		<nav class="nav-links" aria-label="Main">
+			<a href="#demos">Demos</a>
+			<a href="#how">How it works</a>
+			<a href="#docs">Docs</a>
+			<button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+			</button>
+			<a class="gh" href="https://github.com/Pandarens/SdFlip">
+				<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.8 18.3 5.1 18.3 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+				GitHub
+			</a>
+		</nav>
+	</div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+	<div class="wrap">
+		<div>
+			<a class="badge" href="https://github.com/Pandarens/SdFlip/releases"><b>v1.0</b> Open source · MIT</a>
+			<h1>PDFs that turn <span class="grad">like paper.</span></h1>
+			<p class="lead">SdFlip is a free flipbook for the web. Real page curl, the sound of paper, spreads that line up, search and outline, and touch gestures that feel native on any phone. One script, no jQuery.</p>
+			<div class="cta">
+				<button class="btn primary" type="button" data-open="samples/field-guide.pdf" data-title="SdFlip Field Guide">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5.5C5 4 8.5 4 12 6.5v13C8.5 17 5 17 2 18.5zM22 5.5C19 4 15.5 4 12 6.5v13c3.5-2.5 7-2.5 10-1z"/></svg>
+					Open full screen
+				</button>
+				<a class="btn" href="#docs">Get started</a>
+			</div>
+			<div class="install"><span id="install-cmd">npm install sdflip</span><button class="copy" type="button" data-copy="#install-cmd">Copy</button></div>
+			<div class="stats">
+				<div><b>19 KB</b>gzipped</div>
+				<div><b>0</b>dependencies to install</div>
+				<div><b>100%</b>vanilla JS</div>
+			</div>
+		</div>
+		<div>
+			<div class="hero-book"><div id="hero-book" aria-label="Live flipbook demo"></div></div>
+			<div class="hint"><span>Drag a corner</span><span>Swipe</span><span>Arrow keys</span></div>
+		</div>
+	</div>
+</section>
+
+<section class="alt" id="features">
+	<div class="wrap">
+		<div class="kicker">Features</div>
+		<h2>Everything a catalog needs</h2>
+		<p class="sub">Built for real-world PDFs: heavy photo catalogs, InDesign spreads, landscape decks and files with mixed page sizes.</p>
+		<div class="features">
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10l6 6v10H4z"/><path d="M14 4c0 4 2 6 6 6"/></svg></div><h3>Real page curl</h3><p>The sheet bends in an arc with live shading and a cast shadow. Grab a corner and peel it.</p></div>
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></div><h3>Paper sounds</h3><p>Rustle and landing are synthesized with Web Audio. No audio files, unlocked properly on iOS.</p></div>
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Native on phones</h3><p>Swipe, pinch and double tap. Portrait shows one page, landscape a spread. Never traps scrolling.</p></div>
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="1"/><path d="M12 5v14"/></svg></div><h3>Smart spreads</h3><p>Double-width spreads are split and reassembled. Odd sizes are fitted, never stretched.</p></div>
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Search &amp; outline</h3><p>Thumbnails, the PDF outline and full-text search with highlighted snippets in a side panel.</p></div>
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div><h3>Working links</h3><p>Web, email and phone links from the PDF stay clickable, internal links jump to their page.</p></div>
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Fast and frugal</h3><p>Prebuilt sheets, render pausing during flips and only nearby pages in memory.</p></div>
+			<div class="feature"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><h3>Accessible &amp; i18n</h3><p>Keyboard shortcuts, screen reader announcements, focus return. English and Russian built in.</p></div>
+		</div>
+	</div>
+</section>
+
+<section id="demos">
+	<div class="wrap">
+		<div class="kicker">Demos</div>
+		<h2>Try it with different PDFs</h2>
+		<p class="sub">Each card opens in a full-screen lightbox. Every sample was drawn from scratch for this project and is free to reuse.</p>
+		<div class="demos">
+			<button class="demo" type="button" data-open="samples/field-guide.pdf" data-title="SdFlip Field Guide">
+				<div class="cover"><div class="c" data-cover="samples/field-guide.pdf"></div></div>
+				<div class="meta"><span class="tag">Portrait · 12 pages</span><h3>Field guide</h3><p>Outline, internal and external links, searchable text. Search it for “lighthouse”.</p></div>
+			</button>
+			<button class="demo" type="button" data-open="samples/chroma-spreads.pdf" data-title="Chroma">
+				<div class="cover"><div class="c" data-cover="samples/chroma-spreads.pdf"></div></div>
+				<div class="meta"><span class="tag">Double-width spreads</span><h3>Chroma magazine</h3><p>Each spread is one wide PDF page. SdFlip splits it so the artwork meets at the spine.</p></div>
+			</button>
+			<button class="demo" type="button" data-open="samples/landscape-deck.pdf" data-title="Flipbooks, rebuilt">
+				<div class="cover"><div class="c" data-cover="samples/landscape-deck.pdf"></div></div>
+				<div class="meta"><span class="tag">Landscape · 16:9</span><h3>Slide deck</h3><p>Landscape pages open one at a time, at full width, never squeezed into a spread.</p></div>
+			</button>
+			<button class="demo" type="button" data-open="samples/mixed-sizes.pdf" data-title="Mixed page sizes">
+				<div class="cover"><div class="c" data-cover="samples/mixed-sizes.pdf"></div></div>
+				<div class="meta"><span class="tag">A4 · A5 · Letter</span><h3>Mixed page sizes</h3><p>Pages of other sizes are fitted with margins. Nothing is stretched, nothing jumps.</p></div>
+			</button>
+			<button class="demo" type="button" data-open="samples/field-guide.pdf" data-title="Полевой справочник" data-lang="ru">
+				<div class="cover"><div class="c" data-cover="samples/field-guide.pdf"></div></div>
+				<div class="meta"><span class="tag">lang: 'ru'</span><h3>Russian interface</h3><p>The same guide with the built-in Russian locale. Add your own language in a few lines.</p></div>
+			</button>
+			<label class="demo drop" id="drop">
+				<input class="sr" type="file" id="own-pdf" accept="application/pdf,.pdf">
+				<div class="cover">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+					<span>Drop a PDF here or click</span>
+				</div>
+				<div class="meta"><span class="tag">Your file</span><h3>Open your own PDF</h3><p>The file stays in your browser. Nothing is uploaded anywhere.</p></div>
+			</label>
+		</div>
+
+		<div class="inline-demo">
+			<div class="inline-head">
+				<div>
+					<div class="kicker">Inline mode</div>
+					<h2>Or embed it in the page</h2>
+					<p class="sub" style="margin-bottom:0">The same viewer, living inside your layout. The height follows the document, so there are no empty bands.</p>
+				</div>
+				<ul>
+					<li>Vertical swipes scroll the page, horizontal swipes flip</li>
+					<li>The mouse wheel scrolls the site, Ctrl + wheel zooms</li>
+					<li>Arrow keys work while the pointer is over the book</li>
+				</ul>
+			</div>
+			<div class="frame"><div id="inline-book"></div></div>
+		</div>
+	</div>
+</section>
+
+<section class="alt" id="how">
+	<div class="wrap">
+		<div class="kicker">How it works</div>
+		<h2>Paper, made of strips</h2>
+		<p class="sub">No WebGL and no canvas animation loop. The curl is plain CSS 3D, so the GPU does the heavy lifting.</p>
+		<div class="how">
+			<div class="steps">
+				<div class="step"><h3>pdf.js renders the pages</h3><p>The PDF is parsed in a web worker. Pages render to canvas at the exact size they are shown, sharper when you zoom in.</p></div>
+				<div class="step"><h3>Virtual pages fix odd layouts</h3><p>Double-width spreads become a left and a right page, other sizes get margins, and a blank page keeps spreads on the correct side.</p></div>
+				<div class="step"><h3>The sheet is sliced into strips</h3><p>The turning sheet is cut into 14–40 vertical strips nested inside each other. Each one turns a little more than its parent, so the page bends in an arc.</p></div>
+				<div class="step"><h3>Light and shadow follow the angle</h3><p>Each strip gets a gradient from the angle at its left edge to the angle at its right edge. Strips overlap by 2px, so there are no seams.</p></div>
+				<div class="step"><h3>Sound is synthesized, not downloaded</h3><p>Filtered noise is shaped into a rustle, a crackle and a landing slap, pre-rendered into a few buffers that play in sync with the animation.</p></div>
+				<div class="step"><h3>The browser stays responsive</h3><p>The next sheet is built while the screen is still, rendering pauses while a page flies, and pages far away are released from memory.</p></div>
+			</div>
+			<div class="lab" aria-label="Interactive page curl model">
+				<h3>Curl lab <small id="lab-n">20 strips</small></h3>
+				<div class="scene lines" id="scene">
+					<div class="book">
+						<div class="pg l"></div>
+						<div class="pg r"></div>
+						<div class="curl" id="curl"></div>
+					</div>
+				</div>
+				<div class="controls">
+					<label>Progress <input type="range" id="lab-p" min="0" max="1" step="0.005" value="0.32"><output id="lab-po">0.32</output></label>
+					<label>Bend <input type="range" id="lab-b" min="1" max="2.2" step="0.05" value="1.45"><output id="lab-bo">1.45</output></label>
+					<label>Strips <input type="range" id="lab-s" min="4" max="40" step="1" value="20"><output id="lab-so">20</output></label>
+					<div class="row">
+						<button class="chip" type="button" id="lab-lines" aria-pressed="true">Show strips</button>
+						<button class="chip" type="button" id="lab-play" aria-pressed="false">Play</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="docs">
+	<div class="wrap">
+		<div class="kicker">Documentation</div>
+		<h2>Up and running in a minute</h2>
+		<p class="sub">Add two files, then mark any link to a PDF. That is the whole integration.</p>
+		<div class="docs">
+			<nav class="toc" aria-label="Documentation">
+				<a href="#install">Install</a>
+				<a href="#usage">Usage</a>
+				<a href="#options">Options</a>
+				<a href="#attributes">Data attributes</a>
+				<a href="#api">JavaScript API</a>
+				<a href="#events">Events</a>
+				<a href="#keyboard">Keyboard</a>
+				<a href="#theming">Theming</a>
+				<a href="#i18n">Localization</a>
+				<a href="#pdfjs">Hosting pdf.js</a>
+				<a href="#support">Browser support</a>
+			</nav>
+			<div class="doc">
+				<h3 id="install">Install</h3>
+				<div class="tabs" role="tablist">
+					<button role="tab" aria-selected="true" data-tab="t-cdn">CDN</button>
+					<button role="tab" aria-selected="false" data-tab="t-npm">npm</button>
+					<button role="tab" aria-selected="false" data-tab="t-zip">Download</button>
+				</div>
+				<div class="tabpanel" id="t-cdn">
+<pre data-lang="html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Pandarens/SdFlip@1.0.0/dist/sdflip.min.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/Pandarens/SdFlip@1.0.0/dist/sdflip.min.js"&gt;&lt;/script&gt;</pre>
+				</div>
+				<div class="tabpanel" id="t-npm" hidden>
+<pre data-lang="bash">npm install sdflip</pre>
+<pre data-lang="js">import 'sdflip/dist/sdflip.css';
+import SdFlip from 'sdflip';
+
+SdFlip.open('/files/catalog.pdf');</pre>
+				</div>
+				<div class="tabpanel" id="t-zip" hidden>
+					<p>Grab <code>sdflip-1.0.0.zip</code> from the <a href="https://github.com/Pandarens/SdFlip/releases">releases page</a> and copy <code>sdflip.min.js</code> and <code>sdflip.min.css</code> to your site.</p>
+				</div>
+				<p>pdf.js 3.11 is loaded automatically from cdnjs the first time a PDF opens. See <a href="#pdfjs">Hosting pdf.js</a> to serve it yourself.</p>
+
+				<h3 id="usage">Usage</h3>
+				<h4>1. Links that open a lightbox</h4>
+				<p>Any element with <code>data-sdflip</code> opens the viewer on click. The PDF comes from the attribute value or from <code>href</code>, so the link still works without JavaScript.</p>
+<pre data-lang="html">&lt;a href="/files/catalog.pdf" data-sdflip data-sdf-title="Spring catalog"&gt;View catalog&lt;/a&gt;</pre>
+				<h4>2. Open from JavaScript</h4>
+<pre data-lang="js">const viewer = SdFlip.open({
+  source: '/files/catalog.pdf',
+  title: 'Spring catalog',
+  page: 3,
+  onFlip: (page) =&gt; console.log('now on page', page)
+});</pre>
+				<h4>3. Embed inline</h4>
+<pre data-lang="html">&lt;div id="book"&gt;&lt;/div&gt;
+&lt;script&gt;
+  SdFlip.inline('#book', { source: '/files/catalog.pdf' });
+&lt;/script&gt;</pre>
+				<p class="note">Content added later, for example by a SPA router? Call <code>SdFlip.scan()</code> after it is in the DOM. Elements are bound once.</p>
+
+				<h3 id="options">Options</h3>
+				<p>Pass options to <code>SdFlip.open()</code> or <code>SdFlip.inline()</code>, or change <code>SdFlip.defaults</code> for every viewer on the page.</p>
+				<div class="table"><table>
+					<thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead>
+					<tbody>
+						<tr><td><code>source</code></td><td><code>null</code></td><td>PDF URL, <code>File</code>, <code>Blob</code>, <code>ArrayBuffer</code> or <code>Uint8Array</code>.</td></tr>
+						<tr><td><code>title</code></td><td><code>''</code></td><td>Caption in the header; also the dialog label.</td></tr>
+						<tr><td><code>page</code></td><td><code>1</code></td><td>Page to open first.</td></tr>
+						<tr><td><code>layout</code></td><td><code>'auto'</code></td><td><code>'double'</code> always shows spreads, <code>'single'</code> always one page.</td></tr>
+						<tr><td><code>download</code></td><td><code>true</code></td><td>Show the download button.</td></tr>
+						<tr><td><code>downloadUrl</code></td><td><code>null</code></td><td>File for the download button if it differs from <code>source</code>.</td></tr>
+						<tr><td><code>downloadName</code></td><td><code>null</code></td><td>File name for the download.</td></tr>
+						<tr><td><code>print</code>, <code>fullscreen</code></td><td><code>true</code></td><td>Show the print and fullscreen buttons.</td></tr>
+						<tr><td><code>thumbs</code>, <code>outline</code>, <code>search</code></td><td><code>true</code></td><td>Side panel tabs.</td></tr>
+						<tr><td><code>sound</code></td><td><code>true</code></td><td>Page flip sound on open (the user can toggle it).</td></tr>
+						<tr><td><code>soundUrl</code></td><td><code>null</code></td><td>Your own audio file instead of the synthesized sound.</td></tr>
+						<tr><td><code>volume</code></td><td><code>0.6</code></td><td>Sound volume, 0–1.</td></tr>
+						<tr><td><code>duration</code></td><td><code>900</code></td><td>Flip duration in ms. Rapid flips run faster automatically.</td></tr>
+						<tr><td><code>bend</code></td><td><code>1.45</code></td><td>Curl strength: 1 is almost flat, 2.2 is strong.</td></tr>
+						<tr><td><code>perspective</code></td><td><code>5</code></td><td>Perspective depth in page widths. Smaller is more dramatic.</td></tr>
+						<tr><td><code>depth</code></td><td><code>0.45</code></td><td>How far the page lifts toward the viewer, 0–1.</td></tr>
+						<tr><td><code>stripOverlap</code></td><td><code>2</code></td><td>Overlap between curl strips in px. 1px can show seams on some screens.</td></tr>
+						<tr><td><code>queue</code></td><td><code>true</code></td><td>Queue rapid clicks instead of dropping them.</td></tr>
+						<tr><td><code>peel</code></td><td><code>true</code></td><td>Lift the page corner on mouse hover.</td></tr>
+						<tr><td><code>links</code></td><td><code>true</code></td><td>Make PDF links clickable.</td></tr>
+						<tr><td><code>fitHeight</code></td><td><code>true</code></td><td>Inline mode: resize the container to fit the document.</td></tr>
+						<tr><td><code>maxZoom</code></td><td><code>4</code></td><td>Maximum zoom factor.</td></tr>
+						<tr><td><code>lang</code></td><td>auto</td><td>UI language. Detected from <code>&lt;html lang&gt;</code>, then the browser.</td></tr>
+						<tr><td><code>strings</code></td><td><code>null</code></td><td>Override individual UI strings, e.g. <code>{ download: 'Save' }</code>.</td></tr>
+						<tr><td><code>pdfjs</code>, <code>pdfjsWorker</code></td><td>cdnjs</td><td>URLs of <code>pdf.min.js</code> and its worker.</td></tr>
+						<tr><td><code>cMapUrl</code></td><td><code>null</code></td><td>pdf.js character maps for some CJK PDFs.</td></tr>
+					</tbody>
+				</table></div>
+
+				<h3 id="attributes">Data attributes</h3>
+				<div class="table"><table>
+					<thead><tr><th>Attribute</th><th>Option</th></tr></thead>
+					<tbody>
+						<tr><td><code>data-sdflip</code></td><td>Enables the element. Its value (or <code>href</code>) is the <code>source</code>.</td></tr>
+						<tr><td><code>data-sdf-title</code></td><td><code>title</code> (falls back to the <code>title</code> attribute)</td></tr>
+						<tr><td><code>data-sdf-page</code></td><td><code>page</code></td></tr>
+						<tr><td><code>data-sdf-layout</code></td><td><code>layout</code></td></tr>
+						<tr><td><code>data-sdf-download</code></td><td><code>downloadUrl</code></td></tr>
+						<tr><td><code>data-sdf-sound="false"</code></td><td><code>sound: false</code></td></tr>
+						<tr><td><code>data-sdf-lang</code></td><td><code>lang</code></td></tr>
+					</tbody>
+				</table></div>
+
+				<h3 id="api">JavaScript API</h3>
+				<h4>SdFlip</h4>
+				<div class="table"><table>
+					<tbody>
+						<tr><td><code>SdFlip.open(options | url)</code></td><td>Opens a lightbox. Returns a viewer.</td></tr>
+						<tr><td><code>SdFlip.inline(container, options)</code></td><td>Embeds a viewer into an element or selector. Returns a viewer.</td></tr>
+						<tr><td><code>SdFlip.cover(url, target, width)</code></td><td>Draws the first page into an element. Returns a promise.</td></tr>
+						<tr><td><code>SdFlip.scan(root?)</code></td><td>Binds new <code>[data-sdflip]</code> elements. Runs on page load.</td></tr>
+						<tr><td><code>SdFlip.defaults</code></td><td>Default options, editable.</td></tr>
+						<tr><td><code>SdFlip.locales</code></td><td>UI strings by language.</td></tr>
+						<tr><td><code>SdFlip.version</code></td><td><code>'1.0.0'</code></td></tr>
+					</tbody>
+				</table></div>
+				<h4>Viewer</h4>
+				<div class="table"><table>
+					<tbody>
+						<tr><td><code>next()</code>, <code>prev()</code></td><td>Flip forward or back with animation.</td></tr>
+						<tr><td><code>goTo(page)</code></td><td>Go to a page, animating the last sheet.</td></tr>
+						<tr><td><code>page()</code></td><td>Current page number (left page of a spread).</td></tr>
+						<tr><td><code>setZoom(factor)</code></td><td>Zoom from 1 to <code>maxZoom</code>.</td></tr>
+						<tr><td><code>toggleSound()</code>, <code>toggleFullscreen()</code></td><td>Same as the toolbar buttons.</td></tr>
+						<tr><td><code>download()</code>, <code>print()</code></td><td>Same as the toolbar buttons.</td></tr>
+						<tr><td><code>close()</code></td><td>Closes a lightbox with a fade, or destroys an inline viewer.</td></tr>
+						<tr><td><code>destroy()</code></td><td>Removes the viewer and frees memory immediately.</td></tr>
+					</tbody>
+				</table></div>
+
+				<h3 id="events">Events</h3>
+<pre data-lang="js">SdFlip.open({
+  source: 'catalog.pdf',
+  onReady: (viewer) =&gt; {},              // first pages are on screen
+  onFlip: (page, direction) =&gt; {},      // after every turn; direction is 1 or -1
+  onClose: (viewer) =&gt; {},
+  onError: (error, viewer) =&gt; {}        // the PDF could not be opened
+});</pre>
+
+				<h3 id="keyboard">Keyboard</h3>
+				<div class="keys">
+					<div><span>Next / previous</span><span><kbd>→</kbd> <kbd>←</kbd></span></div>
+					<div><span>First / last page</span><span><kbd>Home</kbd> <kbd>End</kbd></span></div>
+					<div><span>Zoom in / out / reset</span><span><kbd>+</kbd> <kbd>−</kbd> <kbd>0</kbd></span></div>
+					<div><span>Fullscreen</span><span><kbd>F</kbd></span></div>
+					<div><span>Sound</span><span><kbd>S</kbd></span></div>
+					<div><span>Thumbnails</span><span><kbd>T</kbd></span></div>
+					<div><span>Close</span><span><kbd>Esc</kbd></span></div>
+					<div><span>Page Up / Page Down</span><span><kbd>PgUp</kbd> <kbd>PgDn</kbd></span></div>
+				</div>
+				<p>Letter shortcuts follow the physical key, so they work in any keyboard layout.</p>
+
+				<h3 id="theming">Theming</h3>
+				<p>The viewer is styled with CSS custom properties on <code>.sdf-root</code>.</p>
+<pre data-lang="css">.sdf-root {
+  --sdf-bg: #0d0f13;       /* lightbox backdrop */
+  --sdf-panel: #171a20;    /* header, toolbar, inline background */
+  --sdf-panel2: #212730;   /* hover, inputs */
+  --sdf-line: #2e3744;     /* borders */
+  --sdf-fg: #e9edf3;       /* text and icons */
+  --sdf-muted: #97a1b0;    /* secondary text */
+  --sdf-accent: #5b5bf6;   /* active buttons, progress, highlights */
+  --sdf-paper: #fff;       /* page color behind the PDF */
+}</pre>
+
+				<h3 id="i18n">Localization</h3>
+				<p>English and Russian ship with the library. Add a language once and every viewer picks it up when <code>&lt;html lang&gt;</code> matches. Missing keys fall back to English; see <code>SdFlip.locales.en</code> for the full list.</p>
+<pre data-lang="js">SdFlip.locales.de = {
+  download: 'PDF herunterladen',
+  close: 'Schließen (Esc)',
+  pageOf: 'Seite {page} von {total}'
+};
+
+SdFlip.open({ source: 'katalog.pdf', lang: 'de' });</pre>
+
+				<h3 id="pdfjs">Hosting pdf.js</h3>
+				<p>To avoid the CDN, copy <code>pdf.min.js</code> and <code>pdf.worker.min.js</code> (pdf.js 3.x) to your server and point SdFlip at them. <code>window.SdFlipConfig</code> works even if it is defined before the library loads.</p>
+<pre data-lang="html">&lt;script&gt;
+  window.SdFlipConfig = {
+    pdfjs: '/vendor/pdf.min.js',
+    pdfjsWorker: '/vendor/pdf.worker.min.js'
+  };
+&lt;/script&gt;
+&lt;script src="/vendor/sdflip.min.js"&gt;&lt;/script&gt;</pre>
+				<p class="note">PDFs from another domain need CORS headers. Opening an HTML page straight from disk (<code>file://</code>) blocks PDF loading in every browser; serve the folder over HTTP, for example with <code>npx serve</code>.</p>
+
+				<h3 id="support">Browser support</h3>
+				<p>Chrome, Edge, Firefox and Safari released in the last few years, on desktop and mobile, including iOS Safari. SdFlip respects <code>prefers-reduced-motion</code>.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+</main>
+
+<footer>
+	<div class="wrap">
+		<span>SdFlip · MIT License · made by <a href="https://github.com/Pandarens">Pandaren</a></span>
+		<span><a href="https://github.com/Pandarens/SdFlip">GitHub</a> · <a href="https://github.com/Pandarens/SdFlip/releases">Releases</a> · <a href="https://github.com/Pandarens/SdFlip/issues">Issues</a></span>
+	</div>
+</footer>
+
+<script src="lib/sdflip.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
